@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: "Onest", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    background-color: hsl(244, 74%, 5%);
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 300px;
+    margin: 130px auto 0;
+}
+
+.select-btn {
+    background-color: hsl(0, 0%, 100%);
+
+    height: 60px;
+    padding: 0 20px;
+    border-radius: 7px;
+    font-size: 1.1em;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-btn i {
+    font-size: 2em;
+    transition: transform 0.3s linear;
+
+}
+
+.content {
+    margin-top: 15px;
+    padding: 20px;
+    background-color: hwb(0 100% 0%);
+    border-radius: 7px;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+.content .search {
+    position: relative;
+}
+
+.search i {
+    position: absolute;
+    left: 15px;
+    line-height: 40px;
+    color: hsl(0, 0%, 60%);
+}
+
+.search input {
+    height: 40px;
+    width: 100%;
+    font-size: 17px;
+    font-family: inherit;
+    padding: 0 15px 0 40px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid hsl(0, 0%, 70%);
+    border-radius: 5px;
+
+
+}
+
+.optional::-webkit-scrollbar {
+    width: 7px;
+}
+
+.optional::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 25px;
+}
+
+.optional::-webkit-scrollbar-thumb {
+    background-color: #cccc;
+    border-radius: 25px;
+}
+
+.optional {
+    width: 100%;
+    max-height: 160px;
+    overflow-y: scroll;
+    /* scrollbar-color: hsl(0, 27%, 94%) transparent;
+    scrollbar-width: thin; */
+    list-style: none;
+    padding-top: 10px;
+    margin-top: 1em;
+    /* margin: 1em; */
+}
+
+.optional li {
+    padding: 7px 13px;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 1em;
+    border-radius: 5px;
+    transition: background 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.optional li:hover {
+    background-color: hsla(0, 0%, 81%, 0.295);
+}
+
+.wrapper.active .content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.wrapper.active .select-btn i {
+    transform: rotate(-180deg);
+}
+
+@media screen and (max-width: 375px) {
+    /* .wrapper {
+
+        margin: 0 1em;
+    } */
+}
