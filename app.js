@@ -1,6 +1,7 @@
 
 const wrapper = document.querySelector('.wrapper'),
     slectButton = wrapper.querySelector('.select-btn'),
+    searchINput = document.querySelector('#search'),
     options = wrapper.querySelector('.optional');
 
 
@@ -41,17 +42,40 @@ const contries = [
     "Yemen", "Yibuti", "Zambia", "Zimbabue"
 ];
 
-const addContries = () => {
+const addContries = (selectedContry) => {
 
-    contries.map(contry => {
+    options.innerHTML = '';
+    contries.forEach(contry => {
 
-        let li = `<li id='seearc'> ${contry} </li>`;
+        let isSelected = contry == selectedContry ? 'selected' : '';
+        let li = `<li onclick="updateName(this)" class=' ${isSelected} '> ${contry} </li>`;
         options.insertAdjacentHTML('beforeend', li);
     });
 };
 
-
 addContries();
 
+const updateName = (selectedLi) => {
+
+    searchINput.value = '';
+    addContries(selectedLi.innerText);
+    wrapper.classList.remove('active')
+    slectButton.firstElementChild.innerText = selectedLi.innerText
+}
+
+searchINput.addEventListener('keyup', () => {
+
+    let arr = [];
+    let searchVla = searchINput.value.toLowerCase();
+
+    arr = contries.filter(data => {
+
+        return data.toLocaleLowerCase().startsWith(searchVla);
+    }).map(data => ` <li onclick="updateName(this)" > ${data}</li> `).join("");
+
+    options.innerHTML = arr ? arr : `<p> Oops country not found </p>`;
+
+
+})
 
 slectButton.addEventListener('click', () => wrapper.classList.toggle('active'));
