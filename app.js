@@ -68,10 +68,9 @@ searchINput.addEventListener('keyup', () => {
     let arr = [];
     let searchVla = searchINput.value.toLowerCase();
 
-    arr = contries.filter(data => {
+    arr = contries.filter(data => data.toLocaleLowerCase().startsWith(searchVla)
 
-        return data.toLocaleLowerCase().startsWith(searchVla);
-    }).map(data => ` <li onclick="updateName(this)" > ${data}</li> `).join("");
+    ).map(data => ` <li onclick="updateName(this)" > ${data}</li> `).join("");
 
     options.innerHTML = arr ? arr : `<p> Oops country not found </p>`;
 
